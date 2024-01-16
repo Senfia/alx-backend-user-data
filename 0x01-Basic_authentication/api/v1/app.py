@@ -30,15 +30,18 @@ if auth_type:
 
 # Define the list of paths that don't require authentication
     excluded_paths = [
-    '/api/v1/status/',
-    '/api/v1/unauthorized/',
-    '/api/v1/forbidden/'
+        '/api/v1/status/',
+        '/api/v1/unauthorized/',
+        '/api/v1/forbidden/'
     ]
 
 
 @app.before_request
 def before_request():
-    #global auth
+    '''
+    before request handler
+    '''
+    global auth
 
     if auth is None:
         return
