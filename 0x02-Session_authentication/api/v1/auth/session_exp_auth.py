@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Session authentication with expiration module for the API.
+"""Session authentication with 
+   expiration module for the API.
 """
 import os
 from flask import request

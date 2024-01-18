@@ -10,11 +10,11 @@ from .session_exp_auth import SessionExpAuth
 
 
 class SessionDBAuth(SessionExpAuth):
-    """Session authentication class with expiration and storage.
+    """Session authentication class.
     """
 
     def create_session(self, user_id=None) -> str:
-        """Creates and stores a session id for the user.
+        """Creates a session id for the user.
         """
         session_id = super().create_session(user_id)
         if type(session_id) == str:
@@ -27,8 +27,8 @@ class SessionDBAuth(SessionExpAuth):
             return session_id
 
     def user_id_for_session_id(self, session_id=None):
-        """Retrieves the user id of the user associated with
-           a given session id.
+        """etrieves the user ID of the user that corresponds with
+           a specific session ID.
         """
         try:
             sessions = UserSession.search({'session_id': session_id})
@@ -44,7 +44,7 @@ class SessionDBAuth(SessionExpAuth):
         return sessions[0].user_id
 
     def destroy_session(self, request=None) -> bool:
-        """Destroys an authenticated session.
+        """Destroys session.
         """
         session_id = self.session_cookie(request)
         try:
